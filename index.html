@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neelesh Mishra - Full Stack Engineer & Portfolio Analyzer</title>
+  <meta name="description" content="Portfolio of Neelesh Mishra, Full Stack Developer specializing in Next.js, React, Node.js, PHP, and AWS. Includes interactive resume, job description fit analyzer, and Ask AI assistant.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Dynamic Spotlight Reveal Overlay (pointer-driven CSS mask enhancement) -->
+  <div class="reveal-layer" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="logo">
+        <span class="logo-accent">&lt;</span>NM<span class="logo-accent"> /&gt;</span>
+      </a>
+      <nav class="nav" aria-label="Main Navigation">
+        <a href="#about" class="nav-link active">About</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#analyzer" class="nav-link">Fit Analyzer</a>
+        <a href="#chat" class="nav-link">Ask AI</a>
+      </nav>
+      <div class="header-actions">
+        <button id="theme-toggle" class="icon-btn" aria-label="Toggle light and dark mode">
+          <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button onclick="window.print()" class="btn btn-secondary btn-sm print-hide">Download PDF</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+    <!-- Hero Section -->
+    <section id="about" class="hero-section">
+      <div class="hero-container grid grid-2">
+        <div class="hero-text-content">
+          <div class="badge-container">
+            <span class="badge badge-accent">Available for New Roles</span>
+            <span class="badge badge-outline">AWS Certified</span>
+          </div>
+          <h1 class="hero-title">Neelesh Mishra</h1>
+          <h2 class="hero-subtitle">Full Stack Engineer</h2>
+          <p class="hero-description">
+            Dedicated developer with <strong>over 5 years</strong> of experience building dynamic web applications. 
+            Specializing in high-performance frontend frameworks like <strong>NextJS</strong> & <strong>ReactJS</strong>, robust backends using <strong>NodeJS</strong> & <strong>PHP (Laravel, CodeIgniter)</strong>, and certified <strong>AWS</strong> cloud infrastructure deployment.
+          </p>
+          <div class="hero-buttons print-hide">
+            <a href="#analyzer" class="btn btn-primary">Analyze Job Fit</a>
+            <a href="#chat" class="btn btn-secondary">Ask AI Assistant</a>
+          </div>
+        </div>
+        <div class="hero-visual-content">
+          <div class="avatar-container">
+            <div class="avatar-glow"></div>
+            <img src="avatar.jpg" alt="Neelesh Mishra - Full Stack Engineer avatar" class="avatar-img" width="400" height="400">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Timeline -->
+    <section id="experience" class="section timeline-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Professional Journey</h2>
+          <p class="section-subtitle">Over 5 years of full stack web engineering experience</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Timeline Item 1 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="timeline-header-meta">
+                <span class="timeline-date">Nov 2022 - Present</span>
+                <span class="timeline-location">Dubai, UAE</span>
+              </div>
+              <h3 class="timeline-role">Full Stack Developer</h3>
+              <h4 class="timeline-company">e& (Etisalat Group)</h4>
+              <p class="timeline-desc">
+                Focusing on creating highly scalable and efficient software solutions. Implementing robust, secure cloud infrastructures utilizing AWS certifications to drive performance and resilience.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">Next.js</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">AWS Cloud</span>
+                <span class="tag">Microservices</span>
+              </div>
+              <button class="btn btn-text btn-sm print-hide" onclick="openDetailsDialog('etisalat')">Deep Dive Detail &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="timeline-header-meta">
+                <span class="timeline-date">June 2021 - Nov 2022</span>
+                <span class="timeline-location">Noida, India</span>
+              </div>
+              <h3 class="timeline-role">Software Developer</h3>
+              <h4 class="timeline-company">Appventurez</h4>
+              <p class="timeline-desc">
+                Developed responsive web applications and scalable REST APIs. Led transition of legacy modules to modern, single-page application systems.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">ReactJS</span>
+                <span class="tag">NodeJS</span>
+                <span class="tag">PHP Laravel</span>
+                <span class="tag">Docker</span>
+                <span class="tag">Git</span>
+              </div>
+              <button class="btn btn-text btn-sm print-hide" onclick="openDetailsDialog('appventurez')">Deep Dive Detail &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="timeline-item">
+            <div class="timeline-marker"></div>
+            <div class="timeline-content card">
+              <div class="timeline-header-meta">
+                <span class="timeline-date">Oct 2017 - May 2021</span>
+                <span class="timeline-location">Noida, India</span>
+              </div>
+              <h3 class="timeline-role">PHP Developer</h3>
+              <h4 class="timeline-company">TechGropse Pvt. Ltd.</h4>
+              <p class="timeline-desc">
+                Engineered complex backend logic, database designs, and custom API integrations using PHP frameworks. Implemented admin dashboards and CMS platforms.
+              </p>
+              <div class="timeline-tags">
+                <span class="tag">PHP Laravel</span>
+                <span class="tag">CodeIgniter</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">RESTful APIs</span>
+              </div>
+              <button class="btn btn-text btn-sm print-hide" onclick="openDetailsDialog('techgropse')">Deep Dive Detail &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Matrix -->
+    <section id="skills" class="section skills-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Core Competencies</h2>
+          <p class="section-subtitle">A curated lookup of engineering skills and toolkits</p>
+        </div>
+
+        <div class="grid grid-3">
+          <!-- Skill Card 1 -->
+          <div class="card skill-card">
+            <div class="skill-card-icon frontend-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-.375l-2.4-3a1 1 0 0 1 0-1.25l2.4-3A1 1 0 0 1 4 6h16a1 1 0 0 1 .78.375l2.4 3a1 1 0 0 1 0 1.25l-2.4 3A1 1 0 0 1 20 14H4Z"/><path d="M12 6v8"/></svg>
+            </div>
+            <h3>Frontend Architecture</h3>
+            <ul class="skill-list">
+              <li>Next.js <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>React.js <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>HTML5 & CSS3 <span class="skill-gauge" style="--val: 95%;"></span></li>
+              <li>JavaScript (ES6+) <span class="skill-gauge" style="--val: 92%;"></span></li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 2 -->
+          <div class="card skill-card">
+            <div class="skill-card-icon backend-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+            </div>
+            <h3>Backend & Core Logic</h3>
+            <ul class="skill-list">
+              <li>Node.js <span class="skill-gauge" style="--val: 85%;"></span></li>
+              <li>PHP (Laravel / CodeIgniter) <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>RESTful API Design <span class="skill-gauge" style="--val: 92%;"></span></li>
+              <li>Database Management (SQL) <span class="skill-gauge" style="--val: 88%;"></span></li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 3 -->
+          <div class="card skill-card">
+            <div class="skill-card-icon devops-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <h3>DevOps & Productivity</h3>
+            <ul class="skill-list">
+              <li>AWS Cloud Services <span class="skill-gauge" style="--val: 80%;"></span></li>
+              <li>Docker Containerization <span class="skill-gauge" style="--val: 78%;"></span></li>
+              <li>Microsoft Power Apps <span class="skill-gauge" style="--val: 75%;"></span></li>
+              <li>Davra Platform <span class="skill-gauge" style="--val: 80%;"></span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Job Fit Analyzer -->
+    <section id="analyzer" class="section analyzer-section print-hide">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Job Description Analyzer</h2>
+          <p class="section-subtitle">Paste a job specification to calculate match percentage and gap analysis with Neelesh's skills</p>
+        </div>
+
+        <div class="card analyzer-card">
+          <div class="analyzer-grid">
+            <!-- Left Pane: Input Form -->
+            <div class="analyzer-input-pane">
+              <label for="job-description-input" class="form-label">Job Description / Requirements</label>
+              <textarea id="job-description-input" class="form-textarea" placeholder="Paste requirements here (e.g. 'Looking for a Senior React developer with Node.js backend experience and knowledge of AWS and Docker...')" rows="8"></textarea>
+              <div class="analyzer-actions">
+                <button id="btn-analyze" class="btn btn-primary btn-full">Run Match Analysis</button>
+                <button id="btn-clear-analyzer" class="btn btn-outline btn-sm">Clear</button>
+              </div>
+              <div class="sample-prompts">
+                <span>Try sample templates:</span>
+                <button class="chip sample-chip" data-template="fullstack">Full Stack React/Node</button>
+                <button class="chip sample-chip" data-template="php-laravel">Laravel/PHP Developer</button>
+                <button class="chip sample-chip" data-template="aws-devops">AWS / DevOps Architect</button>
+              </div>
+            </div>
+
+            <!-- Right Pane: Analysis Results -->
+            <div class="analyzer-results-pane" id="analyzer-results" style="display: none;">
+              <div class="results-header">
+                <div class="radial-progress-container">
+                  <svg class="radial-progress-svg" viewBox="0 0 100 100">
+                    <circle class="circle-bg" cx="50" cy="50" r="40"></circle>
+                    <circle class="circle-fill" cx="50" cy="50" r="40" style="--pct: 0;"></circle>
+                  </svg>
+                  <span class="radial-progress-value" id="match-percentage">0%</span>
+                </div>
+                <div class="results-title-group">
+                  <h3>Compatibility Rating</h3>
+                  <p id="compatibility-verdict" class="verdict-tag">Loading...</p>
+                </div>
+              </div>
+
+              <div class="analysis-breakdown">
+                <div class="breakdown-box">
+                  <h4 class="breakdown-title text-success">Matched Skills</h4>
+                  <div id="matched-skills-list" class="chip-container">
+                    <!-- Dynamic Matched Chips -->
+                  </div>
+                </div>
+
+                <div class="breakdown-box">
+                  <h4 class="breakdown-title text-warning">Potential Gaps / Unmentioned</h4>
+                  <div id="missing-skills-list" class="chip-container">
+                    <!-- Dynamic Missing Chips -->
+                  </div>
+                </div>
+
+                <div class="breakdown-box feedback-box">
+                  <h4 class="breakdown-title">Fit Summary & Recommendations</h4>
+                  <p id="analysis-feedback-text">
+                    Enter a job description to trigger an assessment.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Welcome placeholder pane when results not loaded -->
+            <div class="analyzer-placeholder-pane" id="analyzer-placeholder">
+              <div class="placeholder-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><path d="M10 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="m21 21-4.3-4.3"/></svg>
+              </div>
+              <h3>Ready to Analyze Fit</h3>
+              <p>Paste target requirements, select a sample layout, or run a match rating to see the breakdown of skills and experience alignment.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Q&A Chat Assistant -->
+    <section id="chat" class="section chat-section print-hide">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Ask Neelesh AI</h2>
+          <p class="section-subtitle">Chat with an automated assistant containing Neelesh's detailed professional background</p>
+        </div>
+
+        <div class="card chat-card">
+          <div class="chat-layout">
+            
+            <!-- Chat Info / Suggested Chips -->
+            <div class="chat-sidebar">
+              <h3>Ask anything about:</h3>
+              <ul class="chat-info-list">
+                <li>Professional Experience</li>
+                <li>Next.js, PHP, & AWS Skills</li>
+                <li>Certifications (AWS, Davra)</li>
+                <li>Contact Info & Location</li>
+              </ul>
+              
+              <div class="suggestion-chips-header">Quick Questions:</div>
+              <div class="suggestion-chips">
+                <button class="chip chat-chip" data-question="What is Neelesh's main tech stack?">What is your tech stack?</button>
+                <button class="chip chat-chip" data-question="What certifications do you hold?">Are you AWS certified?</button>
+                <button class="chip chat-chip" data-question="Where was your last role located and what did you do?">What did you do at e&?</button>
+                <button class="chip chat-chip" data-question="How can I contact Neelesh?">How can I contact you?</button>
+              </div>
+            </div>
+
+            <!-- Chat Window -->
+            <div class="chat-window">
+              <div class="chat-messages" id="chat-messages-container">
+                <!-- Welcome Message -->
+                <div class="message bot-message">
+                  <div class="message-bubble">
+                    Hello! I'm Neelesh's interactive portfolio assistant. Ask me questions about his career, experience at e& / Appventurez, technical stack, or certifications. How can I help you today?
+                  </div>
+                  <span class="message-time">Just Now</span>
+                </div>
+              </div>
+              
+              <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                <span></span><span></span><span></span>
+              </div>
+
+              <form id="chat-input-form" class="chat-input-area">
+                <input type="text" id="chat-user-input" class="chat-text-input" placeholder="Type your query (e.g. 'How long did you work at Appventurez?')..." autocomplete="off" required>
+                <button type="submit" class="btn btn-primary" aria-label="Send message">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Information & Certifications -->
+    <section class="section certs-section">
+      <div class="container grid grid-2">
+        <!-- Certifications Box -->
+        <div class="card simple-card">
+          <h3>Certifications & Training</h3>
+          <div class="certifications-list">
+            <div class="cert-item">
+              <div class="cert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              </div>
+              <div class="cert-details">
+                <h4>AWS Certified Developer / Cloud Practitioner</h4>
+                <p>Validation of cloud architecture, security, deployment, and optimization expertise.</p>
+              </div>
+            </div>
+            <div class="cert-item">
+              <div class="cert-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="cert-details">
+                <h4>Davra Certification</h4>
+                <p>Industrial IoT application design and platform deployment integration certificate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Languages & Location Box -->
+        <div class="card simple-card">
+          <h3>Personal Details</h3>
+          <div class="details-grid">
+            <div>
+              <h4>Languages</h4>
+              <ul class="lang-list">
+                <li>Hindi <span class="lang-level">(Full Professional)</span></li>
+                <li>English <span class="lang-level">(Limited Working)</span></li>
+              </ul>
+            </div>
+            <div>
+              <h4>Current Location</h4>
+              <p class="location-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                Dubai, United Arab Emirates
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Print-only Section -->
+    <section class="print-only-resume" aria-hidden="true">
+      <div class="print-header">
+        <h1>Neelesh Mishra</h1>
+        <p class="print-subtitle">Full Stack Engineer | NextJS, ReactJS, NodeJS, PHP | AWS Certified</p>
+        <div class="print-contacts">
+          <span>Phone: 9999695408</span>
+          <span>Email: n.mish2202@gmail.com</span>
+          <span>LinkedIn: linkedin.com/in/neelesh-mishra-6b5066108</span>
+          <span>Location: Dubai, United Arab Emirates</span>
+        </div>
+      </div>
+
+      <div class="print-summary">
+        <h2>Summary</h2>
+        <p>
+          Dedicated Full Stack Developer with over 5 years of experience in developing dynamic web applications using technologies like NextJS, ReactJS, NodeJS, and PHP frameworks (Laravel, CodeIgniter). Focus on creating scalable and efficient solutions, leveraging AWS certification to implement robust cloud infrastructure.
+        </p>
+      </div>
+
+      <div class="print-experience">
+        <h2>Experience</h2>
+        <div class="print-job">
+          <div class="job-meta">
+            <strong>e& (Etisalat Group)</strong>
+            <span>Nov 2022 - Present | Dubai, UAE</span>
+          </div>
+          <div class="job-role">Full Stack Developer</div>
+          <p>Focus on creating scalable and efficient solutions, leveraging AWS certification to implement robust cloud infrastructure.</p>
+        </div>
+
+        <div class="print-job">
+          <div class="job-meta">
+            <strong>Appventurez</strong>
+            <span>June 2021 - November 2022 | Noida, India</span>
+          </div>
+          <div class="job-role">Software Developer</div>
+          <p>Developed responsive web applications and scalable REST APIs. Led transition of legacy modules to modern backend systems.</p>
+        </div>
+
+        <div class="print-job">
+          <div class="job-meta">
+            <strong>TechGropse Pvt. Ltd.</strong>
+            <span>October 2017 - May 2021 | Noida, India</span>
+          </div>
+          <div class="job-role">PHP Developer</div>
+          <p>Engineered complex backend logic, database designs, and custom API integrations using Laravel and CodeIgniter.</p>
+        </div>
+      </div>
+
+      <div class="print-grid-two">
+        <div class="print-skills">
+          <h2>Skills</h2>
+          <p><strong>Frontend:</strong> NextJS, ReactJS, HTML5, CSS3, ES6 JavaScript</p>
+          <p><strong>Backend & DB:</strong> NodeJS, PHP (Laravel, CodeIgniter), SQL</p>
+          <p><strong>DevOps & Tools:</strong> AWS Certified, Docker, Davra, MS Power Apps</p>
+        </div>
+        <div class="print-edu-certs">
+          <h2>Education</h2>
+          <p><strong>Bachelor of Science (Maths)</strong> | 2014 - 2017</p>
+          <p>CSJM University, India</p>
+          
+          <h2>Certifications & Languages</h2>
+          <p>AWS Certified Developer | Davra Certification</p>
+          <p>Languages: English, Hindi</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Deep Dive Dialogs -->
+  <!-- Dialog 1: e& (Etisalat) -->
+  <dialog id="dialog-etisalat" class="detail-dialog">
+    <div class="dialog-wrapper">
+      <div class="dialog-header">
+        <h3>Full Stack Developer at e& (Etisalat Group)</h3>
+        <button class="close-dialog-btn" onclick="closeDetailsDialog('etisalat')" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-meta-grid">
+          <div><strong>Timeline:</strong> Nov 2022 - Present (3 years 9 months)</div>
+          <div><strong>Location:</strong> Dubai, United Arab Emirates</div>
+        </div>
+        <h4>Key Focus Areas & Impact:</h4>
+        <ul>
+          <li><strong>Cloud Architecture Optimization:</strong> Engineered scalable application topologies on AWS, maximizing resource efficiency, speed, and cloud spend.</li>
+          <li><strong>Scalable Microservices:</strong> Migrated legacy workloads to modular Node.js/TypeScript microservices, resulting in improved deployment velocity and application uptime.</li>
+          <li><strong>High-Performance Frontends:</strong> Developed modern user portals utilizing Next.js, leveraging Server Components and incremental static regeneration to minimize initial load times (LCP).</li>
+          <li><strong>Quality & Reliability:</strong> Instituted rigorous automated testing pipelines and telemetry alerts, reducing server issues.</li>
+        </ul>
+        <div class="dialog-tech-pill-container">
+          <span class="tag">Next.js</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">AWS (EC2, S3, RDS, Lambda)</span>
+          <span class="tag">TypeScript</span>
+          <span class="tag">CI/CD</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Dialog 2: Appventurez -->
+  <dialog id="dialog-appventurez" class="detail-dialog">
+    <div class="dialog-wrapper">
+      <div class="dialog-header">
+        <h3>Software Developer at Appventurez</h3>
+        <button class="close-dialog-btn" onclick="closeDetailsDialog('appventurez')" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-meta-grid">
+          <div><strong>Timeline:</strong> June 2021 - November 2022 (1 year 6 months)</div>
+          <div><strong>Location:</strong> Noida, Uttar Pradesh, India</div>
+        </div>
+        <h4>Key Focus Areas & Impact:</h4>
+        <ul>
+          <li><strong>Multi-tenant Web Applications:</strong> Collaborated on creating complex React client architectures with reusable component systems.</li>
+          <li><strong>Docker Containerization:</strong> Standardized local engineering environments across teams using Docker, reducing the "works on my machine" discrepancy.</li>
+          <li><strong>Hybrid Backend Integration:</strong> Maintained and expanded backend microservices utilizing Node.js Express and PHP Laravel to support enterprise CRM integrations.</li>
+          <li><strong>Database Optimization:</strong> Optimized heavy relational database queries, boosting critical API endpoint speeds.</li>
+        </ul>
+        <div class="dialog-tech-pill-container">
+          <span class="tag">ReactJS</span>
+          <span class="tag">NodeJS</span>
+          <span class="tag">PHP Laravel</span>
+          <span class="tag">Docker</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Redux Toolkit</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Dialog 3: TechGropse -->
+  <dialog id="dialog-techgropse" class="detail-dialog">
+    <div class="dialog-wrapper">
+      <div class="dialog-header">
+        <h3>PHP Developer at TechGropse Pvt. Ltd.</h3>
+        <button class="close-dialog-btn" onclick="closeDetailsDialog('techgropse')" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="dialog-body">
+        <div class="dialog-meta-grid">
+          <div><strong>Timeline:</strong> October 2017 - May 2021 (3 years 8 months)</div>
+          <div><strong>Location:</strong> Noida, Uttar Pradesh, India</div>
+        </div>
+        <h4>Key Focus Areas & Impact:</h4>
+        <ul>
+          <li><strong>Custom CRM & CMS Development:</strong> Authored custom Laravel and CodeIgniter applications, creating bespoke administrative workflows, user panels, and content modules.</li>
+          <li><strong>API Development & Integration:</strong> Built secure, REST-compliant APIs for native mobile application backends, supporting authentication and push-notification hooks.</li>
+          <li><strong>Third-party Integrations:</strong> Incorporated payment gateways (Stripe, PayPal), custom mapping utilities, and notification systems into client platforms.</li>
+          <li><strong>Legacy Code Modernization:</strong> Refactored aging PHP CodeIgniter codebases to secure PHP Laravel structures, resolving multiple security vulnerabilities.</li>
+        </ul>
+        <div class="dialog-tech-pill-container">
+          <span class="tag">PHP</span>
+          <span class="tag">Laravel</span>
+          <span class="tag">CodeIgniter</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">jQuery & AJAX</span>
+          <span class="tag">Stripe APIs</span>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer class="footer print-hide">
+    <div class="container footer-container">
+      <p>&copy; 2026 Neelesh Mishra. Built with modern Vanilla CSS, Javascript & Semantic HTML.</p>
+      <div class="footer-contacts">
+        <a href="mailto:n.mish2202@gmail.com">n.mish2202@gmail.com</a>
+        <span>&bull;</span>
+        <a href="tel:9999695408">9999695408</a>
+        <span>&bull;</span>
+        <a href="https://www.linkedin.com/in/neelesh-mishra-6b5066108" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
