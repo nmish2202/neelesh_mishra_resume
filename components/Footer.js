@@ -1,0 +1,20 @@
+import { NEELESH_PROFILE } from "@/lib/data";
+
+export default function Footer() {
+  return (
+    <footer className="footer print-hide">
+      <div className="container footer-container">
+        <p>&copy; 2026 Neelesh Mishra. Built with Next.js, React &amp; Tailwind CSS.</p>
+        <div className="footer-contacts">
+          <a href={`mailto:${NEELESH_PROFILE.email}`}>{NEELESH_PROFILE.email}</a>
+          <span>&bull;</span>
+          <a href={`tel:${NEELESH_PROFILE.phone}`}>{NEELESH_PROFILE.phone}</a>
+          <span>&bull;</span>
+          <a href={`https://www.${NEELESH_PROFILE.linkedin}`} target="_blank" rel="noopener">
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
+}

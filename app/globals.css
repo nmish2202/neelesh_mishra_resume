@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* ==========================================================================
    CSS Custom Properties & Theme Configuration
    ========================================================================== */
@@ -34,8 +38,8 @@
   /* Spacing */
   --section-pad: 9rem;
 
-  --font-family-primary:   'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-family-secondary: 'Plus Jakarta Sans', sans-serif;
+  --font-family-primary:   var(--font-outfit), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-family-secondary: var(--font-plus-jakarta-sans), sans-serif;
 }
 
 [data-theme="light"] {
@@ -121,7 +125,7 @@ body {
   mix-blend-mode: overlay;
   opacity: 0.35;
   transition: --inner-size 0.3s ease, --outer-size 0.3s ease;
-  
+
   mask-image: radial-gradient(
     circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
     white var(--inner-size, 0%),
@@ -814,7 +818,7 @@ strong {
   background: var(--accent-glow);
 }
 
-.vibecoding-icon {
+.ai-dev-icon {
   color: hsl(280 80% 65%);
   background: hsla(280 80% 65% / 0.15);
 }
@@ -853,7 +857,7 @@ strong {
   50% { box-shadow: 0 0 0 4px hsla(38 95% 58% / 0.18); }
 }
 
-/* Featured Vibe Coding card */
+/* Featured AI-Powered Development card */
 .skill-card-featured {
   border-color: hsla(280 80% 65% / 0.45) !important;
   background: linear-gradient(135deg, var(--glass-bg) 60%, hsla(280 80% 65% / 0.08)) !important;
@@ -868,10 +872,10 @@ strong {
   border-radius: inherit;
   background: linear-gradient(120deg, transparent 30%, hsla(280 80% 65% / 0.07) 60%, transparent 80%);
   pointer-events: none;
-  animation: vibeFeaturedShimmer 3.5s ease-in-out infinite;
+  animation: aiDevFeaturedShimmer 3.5s ease-in-out infinite;
 }
 
-@keyframes vibeFeaturedShimmer {
+@keyframes aiDevFeaturedShimmer {
   0%, 100% { opacity: 0; transform: translateX(-100%); }
   50% { opacity: 1; transform: translateX(100%); }
 }
@@ -955,6 +959,42 @@ strong {
 @keyframes gaugeGrow {
   from { width: 0; opacity: 0; }
   to   { width: var(--val); opacity: 1; }
+}
+
+/* ==========================================================================
+   Featured Projects
+   ========================================================================== */
+.project-card h3 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.project-card p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.project-tech-row {
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: center;
+  text-align: center;
+}
+
+.project-tech-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.project-tech-row .dialog-tech-pill-container {
+  justify-content: center;
 }
 
 /* ==========================================================================
@@ -1639,21 +1679,22 @@ strong {
     color: #000000 !important;
     font-size: 11pt !important;
   }
-  
-  .header, 
-  .hero-section, 
-  .timeline-section, 
-  .skills-section, 
-  .analyzer-section, 
-  .chat-section, 
-  .certs-section, 
+
+  .header,
+  .hero-section,
+  .timeline-section,
+  .projects-section,
+  .skills-section,
+  .analyzer-section,
+  .chat-section,
+  .certs-section,
   .detail-dialog,
   .footer,
   .print-hide,
   .reveal-layer {
     display: none !important;
   }
-  
+
   .print-only-resume {
     display: block !important;
     width: 100%;
