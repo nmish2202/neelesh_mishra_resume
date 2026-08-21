@@ -1737,12 +1737,15 @@ strong {
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
+    align-items: stretch;
     text-align: center;
   }
 }
 
 .footer-contacts {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
   align-items: center;
 }
