@@ -6,6 +6,32 @@ import { getThemeColors } from "@/lib/theme-colors";
 
 const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
+/* Soft radial-gradient sprite texture, generated once on a small canvas — used for the nebula glows */
+function createGlowTexture() {
+  const size = 128;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+  gradient.addColorStop(0, "rgba(255,255,255,1)");
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, size, size);
+  return new THREE.CanvasTexture(canvas);
+}
+
+// Large ambient glow sprites placed at increasing depth so scroll parallax drifts a different
+// one behind each section further down the page — fills the otherwise-empty mid-page backgrounds
+// without a second render pipeline (same scene/camera/renderer as the starfield).
+const NEBULA_SPECS = [
+  { color: 0x22d3ee, x: -420, y: 140, z: -260, scale: 900, opacity: 0.14 },
+  { color: 0xc084fc, x: 520, y: -180, z: -750, scale: 1100, opacity: 0.13 },
+  { color: 0xfbbf24, x: -560, y: 260, z: -1250, scale: 1000, opacity: 0.12 },
+  { color: 0x22d3ee, x: 480, y: -80, z: -1750, scale: 1200, opacity: 0.13 },
+  { color: 0xc084fc, x: -300, y: -220, z: -2200, scale: 1000, opacity: 0.11 },
+];
+
 /* Global 3D particle starfield background, with scroll parallax and mouse-driven camera skew */
 export default function StarfieldCanvas() {
   const canvasRef = useRef(null);
@@ -61,6 +87,23 @@ export default function StarfieldCanvas() {
     scene.add(particles);
     particles.position.y = 0;
 
+    const glowTexture = createGlowTexture();
+    const nebulae = NEBULA_SPECS.map((spec) => {
+      const nebulaMaterial = new THREE.SpriteMaterial({
+        map: glowTexture,
+        color: spec.color,
+        transparent: true,
+        opacity: spec.opacity,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      });
+      const sprite = new THREE.Sprite(nebulaMaterial);
+      sprite.position.set(spec.x, spec.y, spec.z);
+      sprite.scale.set(spec.scale, spec.scale, 1);
+      scene.add(sprite);
+      return { sprite, baseOpacity: spec.opacity };
+    });
+
     const handleScroll = () => {
       targetScrollY = window.scrollY;
     };
@@ -104,6 +147,10 @@ export default function StarfieldCanvas() {
       particles.rotation.y = time * 0.015;
       particles.rotation.x = time * 0.008;
 
+      nebulae.forEach(({ sprite, baseOpacity }, i) => {
+        sprite.material.opacity = baseOpacity + Math.sin(time * 0.3 + i * 1.7) * 0.03;
+      });
+
       renderer.render(scene, camera);
       rafId = requestAnimationFrame(tick);
     }
@@ -117,6 +164,11 @@ export default function StarfieldCanvas() {
       window.removeEventListener("themechange", handleThemeChange);
       geometry.dispose();
       material.dispose();
+      nebulae.forEach(({ sprite }) => {
+        scene.remove(sprite);
+        sprite.material.dispose();
+      });
+      glowTexture.dispose();
       renderer.dispose();
     };
   }, []);

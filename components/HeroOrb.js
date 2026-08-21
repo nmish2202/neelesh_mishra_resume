@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { getThemeColors } from "@/lib/theme-colors";
 
@@ -13,11 +13,15 @@ const NODE_SPECS = [
   { name: "AWS Cloud", color: 0xff9900, size: 0.15, radius: 2.7, speed: 0.4, offset: 5.5 },
 ];
 
+const colorToHex = (color) => `#${color.toString(16).padStart(6, "0")}`;
+
 /* Draggable/touch-rotatable holographic hero orb with orbiting skill nodes.
    Renders `children` (the avatar) as a sibling layer inside the same container,
    matching the original markup where Three.js injects its canvas alongside a static avatar div. */
 export default function HeroOrb({ children }) {
   const containerRef = useRef(null);
+  const tooltipRef = useRef(null);
+  const [hoveredNode, setHoveredNode] = useState(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -68,6 +72,7 @@ export default function HeroOrb({ children }) {
     ring3.rotation.z = Math.PI / 6;
     group.add(ring3);
 
+    // Slightly larger invisible hit-sphere per node makes hover easier to trigger than the tiny visible mesh
     const skillNodes = NODE_SPECS.map((spec) => {
       const nodeGroup = new THREE.Group();
 
@@ -78,6 +83,10 @@ export default function HeroOrb({ children }) {
       const glowGeo = new THREE.SphereGeometry(spec.size * 1.5, 16, 16);
       const glowMat = new THREE.MeshBasicMaterial({ color: spec.color, transparent: true, opacity: 0.35 });
       nodeGroup.add(new THREE.Mesh(glowGeo, glowMat));
+
+      const hitGeo = new THREE.SphereGeometry(spec.size * 2.4, 8, 8);
+      const hitMat = new THREE.MeshBasicMaterial({ visible: false });
+      nodeGroup.add(new THREE.Mesh(hitGeo, hitMat));
 
       group.add(nodeGroup);
       return { mesh: nodeGroup, spec };
@@ -94,6 +103,7 @@ export default function HeroOrb({ children }) {
     const handleMouseDown = (e) => {
       isDragging = true;
       prevMousePos = { x: e.offsetX, y: e.offsetY };
+      container.style.cursor = "grabbing";
     };
 
     const handleMouseMove = (e) => {
@@ -106,6 +116,7 @@ export default function HeroOrb({ children }) {
 
     const handleMouseUp = () => {
       isDragging = false;
+      container.style.cursor = hoveredIndex !== -1 ? "pointer" : "grab";
     };
 
     const handleTouchStart = (e) => {
@@ -148,12 +159,52 @@ export default function HeroOrb({ children }) {
       }, 150);
     };
 
+    // Hover detection via raycasting against each node's invisible hit-sphere
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2();
+    const nodeMeshes = skillNodes.map((n) => n.mesh);
+    let hoveredIndex = -1;
+
+    const handleHoverCheck = (e) => {
+      if (isDragging) return;
+      const rect = container.getBoundingClientRect();
+      pointer.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+      pointer.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+
+      raycaster.setFromCamera(pointer, camera);
+      const intersects = raycaster.intersectObjects(nodeMeshes, true);
+
+      let hitIndex = -1;
+      if (intersects.length > 0) {
+        let obj = intersects[0].object;
+        while (obj.parent && !nodeMeshes.includes(obj)) obj = obj.parent;
+        hitIndex = nodeMeshes.indexOf(obj);
+      }
+
+      if (hitIndex !== hoveredIndex) {
+        hoveredIndex = hitIndex;
+        setHoveredNode(hitIndex !== -1 ? skillNodes[hitIndex].spec : null);
+        container.style.cursor = hitIndex !== -1 ? "pointer" : "grab";
+      }
+    };
+
+    const handlePointerLeaveContainer = () => {
+      if (hoveredIndex !== -1) {
+        hoveredIndex = -1;
+        setHoveredNode(null);
+      }
+      container.style.cursor = "grab";
+    };
+
+    container.style.cursor = "grab";
     container.addEventListener("mousedown", handleMouseDown);
     container.addEventListener("mousemove", handleMouseMove);
     document.addEventListener("mouseup", handleMouseUp);
     container.addEventListener("touchstart", handleTouchStart);
     container.addEventListener("touchmove", handleTouchMove);
     container.addEventListener("touchend", handleTouchEnd);
+    container.addEventListener("pointermove", handleHoverCheck);
+    container.addEventListener("pointerleave", handlePointerLeaveContainer);
     window.addEventListener("resize", handleResize);
     window.addEventListener("themechange", handleThemeChange);
 
@@ -163,6 +214,7 @@ export default function HeroOrb({ children }) {
     );
     observer.observe(container);
 
+    const worldPos = new THREE.Vector3();
     let rafId;
     function tick(timestamp) {
       rafId = requestAnimationFrame(tick);
@@ -191,6 +243,15 @@ export default function HeroOrb({ children }) {
       });
 
       renderer.render(scene, camera);
+
+      // Keep the hovered node's tooltip pinned to its live (orbiting) screen position
+      if (hoveredIndex !== -1 && tooltipRef.current) {
+        skillNodes[hoveredIndex].mesh.getWorldPosition(worldPos);
+        worldPos.project(camera);
+        const x = (worldPos.x * 0.5 + 0.5) * container.clientWidth;
+        const y = (-worldPos.y * 0.5 + 0.5) * container.clientHeight;
+        tooltipRef.current.style.transform = `translate(${x}px, ${y}px) translate(-50%, -140%)`;
+      }
     }
     rafId = requestAnimationFrame(tick);
 
@@ -203,6 +264,8 @@ export default function HeroOrb({ children }) {
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
       container.removeEventListener("touchend", handleTouchEnd);
+      container.removeEventListener("pointermove", handleHoverCheck);
+      container.removeEventListener("pointerleave", handlePointerLeaveContainer);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("themechange", handleThemeChange);
       if (renderer.domElement.parentNode === container) {
@@ -215,6 +278,14 @@ export default function HeroOrb({ children }) {
   return (
     <div id="hero-3d-container" ref={containerRef}>
       {children}
+      <div ref={tooltipRef} className={`hero-node-tooltip${hoveredNode ? " is-visible" : ""}`}>
+        {hoveredNode && (
+          <>
+            <span className="hero-node-tooltip-dot" style={{ backgroundColor: colorToHex(hoveredNode.color) }} />
+            {hoveredNode.name}
+          </>
+        )}
+      </div>
     </div>
   );
 }

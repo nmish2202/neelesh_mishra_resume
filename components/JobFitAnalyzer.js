@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ANALYZER_TEMPLATES } from "@/lib/data";
 import { analyzeJobFit } from "@/lib/analyze";
+import Reveal from "./Reveal";
 
 const SAMPLE_CHIPS = [
   { key: "fullstack", label: "Full Stack React/Node" },
@@ -38,13 +39,13 @@ export default function JobFitAnalyzer() {
   return (
     <section id="analyzer" className="section analyzer-section print-hide">
       <div className="container">
-        <div className="section-header">
+        <Reveal className="section-header">
           <span className="section-eyebrow">Smart Match</span>
           <h2 className="section-title">Job Fit Analyzer</h2>
           <p className="section-subtitle">Paste a job spec to calculate your match percentage and skill gap analysis</p>
-        </div>
+        </Reveal>
 
-        <div className="card analyzer-card">
+        <Reveal as="div" className="card analyzer-card">
           <div className="analyzer-grid">
             {/* Left Pane: Input Form */}
             <div className="analyzer-input-pane">
@@ -155,7 +156,7 @@ export default function JobFitAnalyzer() {
               </div>
             )}
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

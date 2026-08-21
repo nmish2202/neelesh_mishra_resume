@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { EXPERIENCE } from "@/lib/data";
+import Reveal from "./Reveal";
 
 function DeepDiveDialog({ job }) {
   const dialogRef = useRef(null);
@@ -115,15 +116,17 @@ export default function ExperienceTimeline() {
   return (
     <section id="experience" className="section timeline-section">
       <div className="container">
-        <div className="section-header">
+        <Reveal className="section-header">
           <span className="section-eyebrow">Experience</span>
           <h2 className="section-title">Professional Journey</h2>
           <p className="section-subtitle">8+ years of full stack web engineering across UAE &amp; India</p>
-        </div>
+        </Reveal>
 
         <div className="timeline">
-          {EXPERIENCE.map((job) => (
-            <TimelineCard job={job} key={job.id} />
+          {EXPERIENCE.map((job, i) => (
+            <Reveal key={job.id} delay={i * 90}>
+              <TimelineCard job={job} />
+            </Reveal>
           ))}
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { CHAT_QA, CHAT_FALLBACKS } from "@/lib/data";
+import Reveal from "./Reveal";
 
 const INFO_ITEMS = [
   "Professional Experience",
@@ -74,13 +75,13 @@ export default function ChatBot() {
   return (
     <section id="chat" className="section chat-section print-hide">
       <div className="container">
-        <div className="section-header">
+        <Reveal className="section-header">
           <span className="section-eyebrow">AI Assistant</span>
           <h2 className="section-title">Ask Neelesh AI</h2>
           <p className="section-subtitle">Chat with an AI assistant powered by Neelesh&apos;s detailed professional background</p>
-        </div>
+        </Reveal>
 
-        <div className="card chat-card">
+        <Reveal as="div" className="card chat-card">
           <div className="chat-layout">
             {/* Chat Info / Suggested Chips */}
             <div className="chat-sidebar">
@@ -138,7 +139,7 @@ export default function ChatBot() {
               </form>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
