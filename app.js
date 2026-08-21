@@ -3,28 +3,36 @@
    ========================================================================== */
 const NEELESH_PROFILE = {
   name: "Neelesh Mishra",
-  title: "Full Stack Engineer",
+  title: "Full Stack Developer",
   email: "n.mish2202@gmail.com",
-  phone: "9999695408",
-  linkedin: "www.linkedin.com/in/neelesh-mishra-6b5066108",
+  phone: "+971-502416958",
+  phoneAlt: "+91-9999695408",
+  linkedin: "linkedin.com/in/neeleshmishra-6b5066108",
   location: "Dubai, United Arab Emirates",
-  education: {
-    degree: "Bachelor of Science (Maths)",
-    university: "CSJM University, India",
-    years: "2014 - 2017"
-  },
+  education: [
+    {
+      degree: "Master of Computer Applications (MCA)",
+      university: "Mangalayatan University, Aligarh",
+      years: "2024"
+    },
+    {
+      degree: "Bachelor of Science (Mathematics)",
+      university: "CSJM University, India",
+      years: "2014 - 2017"
+    }
+  ],
   certifications: ["AWS Certified Developer / Cloud Practitioner", "Davra Certified IoT Specialist"],
   languages: [
     { name: "Hindi", proficiency: "Full Professional" },
-    { name: "English", proficiency: "Limited Working" }
+    { name: "English", proficiency: "Professional Working" }
   ],
   experience: [
     {
-      company: "e& (Etisalat Group)",
-      role: "Full Stack Developer",
+      company: "e& enterprise",
+      role: "Senior Software Engineer",
       period: "November 2022 - Present",
       location: "Dubai, UAE",
-      description: "Focusing on creating scalable and efficient software solutions. Implementing robust, secure cloud infrastructures utilizing AWS certifications to drive performance and resilience."
+      description: "Building scalable customer-facing enterprise platforms for government and financial clients — including Dubai Police's Oyoon camera monitoring admin panel, AWQAF's SmartKhateeb operations portal, ADCB's MPOS platform, and ADNOC's national permitting portal — using Next.js, TypeScript, and modern cloud architecture."
     },
     {
       company: "Appventurez",
@@ -42,9 +50,11 @@ const NEELESH_PROFILE = {
     }
   ],
   skills: {
-    frontend: ["nextjs", "next.js", "reactjs", "react.js", "react", "html5", "css3", "javascript", "js", "es6"],
-    backend: ["nodejs", "node.js", "node", "php", "laravel", "codeigniter", "restful api", "rest api", "sql", "mysql", "database"],
-    devops: ["aws", "amazon web services", "docker", "power apps", "powerapps", "microsoft power apps", "davra"]
+    agenticai: ["agentic ai", "agentic", "llm", "rag", "multi-agent", "multi agent", "ai agent", "ai engineer", "langchain", "langgraph", "autonomous agent"],
+    vibecoding: ["vibe coding", "vibe-coding", "vibecoding", "ai-assisted", "prompt engineering", "ai coding"],
+    frontend: ["nextjs", "next.js", "reactjs", "react.js", "react", "html5", "css3", "javascript", "js", "es6", "typescript", "tailwind", "tailwindcss"],
+    backend: ["nodejs", "node.js", "node", "php", "laravel", "codeigniter", "restful api", "rest api", "sql", "mysql", "database", "mongodb", "postgresql", "prisma"],
+    devops: ["aws", "amazon web services", "docker", "power apps", "powerapps", "microsoft power apps", "davra", "ci/cd", "cicd", "linux"]
   }
 };
 
@@ -58,6 +68,22 @@ const ANALYZER_TEMPLATES = {
 /* Chat Assistant Knowledgebase (regex mappings -> answers) */
 const CHAT_QA = [
   {
+    pattern: /(agentic.?ai|ai.?agent|multi.?agent|llm.?orchestrat|rag|langgraph|langchain|autonomous.?agent|ai.?engineer)/i,
+    reply: "Neelesh is building expertise as an <strong>Agentic AI Engineer</strong> &#x26A1; His capabilities include:<br>" +
+           "&#x2022; <strong>Multi-Agent System Design</strong> &mdash; architecting networks of autonomous AI agents that collaborate to solve complex tasks (93%).<br>" +
+           "&#x2022; <strong>LLM Orchestration &amp; RAG</strong> &mdash; chaining large language models with retrieval-augmented generation pipelines for grounded, accurate responses (90%).<br>" +
+           "&#x2022; <strong>Tool &amp; Function Calling</strong> &mdash; equipping agents with real-world tools: APIs, code execution, web search, and more (88%).<br>" +
+           "&#x2022; <strong>Autonomous Workflow Pipelines</strong> &mdash; designing self-correcting pipelines that plan, execute, and adapt without human intervention (85%)."
+  },
+  {
+    pattern: /(vibe.?cod|ai.?assisted|prompt.?engineer|ai.?develop)/i,
+    reply: "Vibe Coding is Neelesh's <strong>latest and most cutting-edge skill</strong> ✦ It encompasses:<br>" +
+           "• <strong>AI-Assisted Development</strong> — using AI tools like Cursor, GitHub Copilot, and Gemini to accelerate coding (95%).<br>" +
+           "• <strong>Prompt Engineering</strong> — crafting precise, optimized prompts to generate production-quality code (92%).<br>" +
+           "• <strong>Rapid Prototyping</strong> — going from idea to working prototype at lightning speed with AI collaboration (90%).<br>" +
+           "• <strong>Creative Problem Solving</strong> — combining human creativity with AI horsepower to tackle complex challenges (88%)."
+  },
+  {
     pattern: /(hi|hello|hey|greetings|good morning|good afternoon)/i,
     reply: "Hello! I am Neelesh's virtual assistant. I can tell you about his professional experience, certifications, technical skill sets, or how to contact him. What would you like to know?"
   },
@@ -65,16 +91,17 @@ const CHAT_QA = [
     pattern: /(contact|phone|email|linked|reach|call|write|address)/i,
     reply: `You can reach Neelesh Mishra via:<br>
             • <strong>Email:</strong> <a href="mailto:${NEELESH_PROFILE.email}">${NEELESH_PROFILE.email}</a><br>
-            • <strong>Phone:</strong> <a href="tel:${NEELESH_PROFILE.phone}">${NEELESH_PROFILE.phone}</a><br>
+            • <strong>Phone (UAE):</strong> <a href="tel:${NEELESH_PROFILE.phone}">${NEELESH_PROFILE.phone}</a><br>
+            • <strong>Phone (India):</strong> <a href="tel:${NEELESH_PROFILE.phoneAlt}">${NEELESH_PROFILE.phoneAlt}</a><br>
             • <strong>LinkedIn:</strong> <a href="https://${NEELESH_PROFILE.linkedin}" target="_blank">${NEELESH_PROFILE.linkedin}</a><br>
             • <strong>Location:</strong> ${NEELESH_PROFILE.location}`
   },
   {
     pattern: /(stack|skills|technolog|languages|frameworks|coding|code)/i,
     reply: "Neelesh's core technical toolkit includes:<br>" +
-           "• <strong>Frontend:</strong> NextJS, ReactJS, modern HTML5 & CSS3, ES6+ JavaScript<br>" +
-           "• <strong>Backend:</strong> NodeJS, PHP (Laravel & CodeIgniter), SQL database query design and optimization<br>" +
-           "• <strong>DevOps & Platforms:</strong> AWS (Amazon Web Services), Docker containerization, Microsoft Power Apps, and Davra platform integrations."
+           "• <strong>Frontend:</strong> NextJS, ReactJS, TypeScript, Tailwind CSS, modern HTML5 & CSS3, ES6+ JavaScript<br>" +
+           "• <strong>Backend:</strong> NodeJS, PHP (Laravel & CodeIgniter), MySQL & MongoDB database design and optimization<br>" +
+           "• <strong>DevOps & Platforms:</strong> AWS (Amazon Web Services), Docker containerization, CI/CD pipelines, Microsoft Power Apps, and Davra platform integrations."
   },
   {
     pattern: /(certificat|certified|credentials)/i,
@@ -83,29 +110,29 @@ const CHAT_QA = [
             2. <strong>Davra Platform Certification</strong> - confirming proficiency in IoT application design and dashboard integration.`
   },
   {
-    pattern: /(experience|work|jobs|history|career|etisalat|e&|appventurez|techgropse)/i,
-    reply: `Neelesh has over <strong>5 years</strong> of professional software development experience:<br><br>
-            • <strong>e& (Etisalat Group), Dubai:</strong> Full Stack Developer (Nov 2022 - Present). Focuses on scalable Next.js interfaces, Node.js microservices, and secure AWS infrastructure.<br><br>
+    pattern: /(experience|work|jobs|history|career|role|located|etisalat|e&|appventurez|techgropse)/i,
+    reply: `Neelesh has <strong>8+ years</strong> of professional software development experience:<br><br>
+            • <strong>e& enterprise, Dubai:</strong> Senior Software Engineer (Nov 2022 - Present). Ships enterprise platforms for major UAE government and financial clients, including Dubai Police's Oyoon camera monitoring system, AWQAF's SmartKhateeb operations portal, ADCB's MPOS platform, and ADNOC's national permitting portal, using Next.js, TypeScript, and secure AWS infrastructure.<br><br>
             • <strong>Appventurez, India:</strong> Software Developer (Jun 2021 - Nov 2022). Developed responsive React dashboards and backend APIs, using Docker for developer parity.<br><br>
             • <strong>TechGropse Pvt. Ltd., India:</strong> PHP Developer (Oct 2017 - May 2021). Created PHP Laravel and CodeIgniter custom web applications, CMS platforms, and databases.`
   },
   {
-    pattern: /(education|university|college|degree|study|maths)/i,
-    reply: `Neelesh completed a <strong>Bachelor of Science degree in Mathematics</strong> from <strong>CSJM University</strong>, studying from 2014 to 2017. This math background provides him with a strong foundation in logical reasoning and problem-solving.`
+    pattern: /(education|university|college|degree|study|maths|mca)/i,
+    reply: `Neelesh holds a <strong>Master of Computer Applications (MCA)</strong> from <strong>Mangalayatan University, Aligarh</strong> (2024), and a <strong>Bachelor of Science in Mathematics</strong> from <strong>CSJM University</strong> (2014 - 2017). This math background provides him with a strong foundation in logical reasoning and problem-solving.`
   },
   {
     pattern: /(location|live|based|dubai|uae|india|noida)/i,
-    reply: `Neelesh is currently based in <strong>Dubai, United Arab Emirates</strong>, working as a Full Stack Developer for e&. Previously, he worked in Noida, India.`
+    reply: `Neelesh is currently based in <strong>Dubai, United Arab Emirates</strong>, working as a Senior Software Engineer for e& enterprise. Previously, he worked in Noida, India.`
   },
   {
-    pattern: /(next|react|node|php|laravel|aws|docker|power)/i,
-    reply: "Yes, Neelesh is highly proficient in those core technologies. He uses Next.js/React for building high-performance modern user interfaces, Node.js/PHP (Laravel/CodeIgniter) for scalable backend APIs, and AWS & Docker for deployment and infrastructure."
+    pattern: /(next|react|node|php|laravel|aws|docker|power|typescript|mongodb)/i,
+    reply: "Yes, Neelesh is highly proficient in those core technologies. He uses Next.js/React with TypeScript for building high-performance modern user interfaces, Node.js/PHP (Laravel/CodeIgniter) for scalable backend APIs, MySQL/MongoDB for data, and AWS & Docker for deployment and infrastructure."
   }
 ];
 
 /* Fallback messages if no keyword triggers */
 const CHAT_FALLBACKS = [
-  "That is a great question. While I don't have a specific answer for that, I can tell you that Neelesh has over 5 years of full-stack experience in Next.js, Node.js, PHP, and AWS. Would you like details on his experience, certifications, or contact info?",
+  "That is a great question. While I don't have a specific answer for that, I can tell you that Neelesh has 8+ years of full-stack experience in Next.js, Node.js, PHP, and AWS. Would you like details on his experience, certifications, or contact info?",
   "I'm not quite sure about that specific detail. You can check out his career timeline or skills matrix on the page, or contact him directly at n.mish2202@gmail.com.",
   "I specialize in answering questions about Neelesh's background, such as his work at e& (Etisalat), Appventurez, his AWS certification, or his math degree. Can you try rephrasing your question?"
 ];
@@ -277,18 +304,24 @@ function runAnalysis(jobText) {
   
   // Define our resume skills database with clean display names
   const portfolioSkills = [
+    { name: "Agentic AI Engineering", keys: ["agentic ai", "agentic", "ai agent", "multi-agent", "llm", "rag", "langchain", "langgraph", "autonomous agent", "ai engineer"] },
+    { name: "Vibe Coding", keys: ["vibe coding", "vibe-coding", "vibecoding", "ai-assisted", "ai assisted", "prompt engineering", "ai coding", "ai development"] },
     { name: "NextJS", keys: ["nextjs", "next.js"] },
     { name: "ReactJS", keys: ["reactjs", "react.js", "react", "redux"] },
+    { name: "TypeScript", keys: ["typescript", " ts "] },
     { name: "NodeJS", keys: ["nodejs", "node.js", "node", "express"] },
     { name: "PHP Laravel", keys: ["php", "laravel"] },
     { name: "CodeIgniter", keys: ["codeigniter", "code igniter"] },
     { name: "AWS Cloud", keys: ["aws", "amazon web services", "s3", "ec2", "rds", "lambda"] },
     { name: "Docker", keys: ["docker", "container", "containers"] },
+    { name: "CI/CD", keys: ["ci/cd", "cicd", "continuous integration", "continuous deployment"] },
     { name: "Microsoft Power Apps", keys: ["power apps", "powerapps", "microsoft power apps"] },
     { name: "Davra Platform", keys: ["davra"] },
     { name: "HTML5 & CSS3", keys: ["html5", "css3", "html", "css", "glassmorphism", "flexbox", "grid"] },
-    { name: "JavaScript ES6+", keys: ["javascript", "js", "typescript", "es6"] },
+    { name: "TailwindCSS", keys: ["tailwind", "tailwindcss"] },
+    { name: "JavaScript ES6+", keys: ["javascript", "js", "es6"] },
     { name: "SQL Databases", keys: ["sql", "mysql", "database", "databases", "query"] },
+    { name: "MongoDB / NoSQL", keys: ["mongodb", "nosql", "postgresql", "postgres"] },
     { name: "RESTful APIs", keys: ["restful api", "rest api", "apis", "endpoints"] }
   ];
 
@@ -303,9 +336,7 @@ function runAnalysis(jobText) {
     { name: "Rust", keys: ["rust"] },
     { name: "Kubernetes", keys: ["kubernetes", "k8s"] },
     { name: "Terraform", keys: ["terraform", "iac"] },
-    { name: "GraphQL", keys: ["graphql"] },
-    { name: "MongoDB / NoSQL", keys: ["mongodb", "nosql", "dynamodb"] },
-    { name: "TailwindCSS", keys: ["tailwind", "tailwindcss"] }
+    { name: "GraphQL", keys: ["graphql"] }
   ];
 
   const matched = [];
@@ -359,7 +390,7 @@ function runAnalysis(jobText) {
   if (score >= 80) {
     verdictText = "Outstanding Match";
     verdictClass = "verdict-success";
-    feedbackHTML = `Neelesh is an <strong>excellent fit</strong> for this position. His direct expertise with ${matched.slice(0, 3).join(', ')} aligns perfectly with your requirements. Leveraging over 5 years of experience (currently in a Full Stack capacity at e& in Dubai), he can integrate immediately into your workflow.`;
+    feedbackHTML = `Neelesh is an <strong>excellent fit</strong> for this position. His direct expertise with ${matched.slice(0, 3).join(', ')} aligns perfectly with your requirements. Leveraging 8+ years of experience (currently as a Senior Software Engineer at e& in Dubai), he can integrate immediately into your workflow.`;
   } else if (score >= 60) {
     verdictText = "Strong Match";
     verdictClass = "verdict-success";

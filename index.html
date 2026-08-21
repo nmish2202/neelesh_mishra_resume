@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neelesh Mishra - Full Stack Engineer & Portfolio Analyzer</title>
+  <title>Neelesh Mishra - Full Stack Developer & Portfolio Analyzer</title>
   <meta name="description" content="Portfolio of Neelesh Mishra, Full Stack Developer specializing in Next.js, React, Node.js, PHP, and AWS. Includes interactive resume, job description fit analyzer, and Ask AI assistant.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Global 3D Background Canvas -->
+  <canvas id="three-bg-canvas"></canvas>
+
   <!-- Dynamic Spotlight Reveal Overlay (pointer-driven CSS mask enhancement) -->
   <div class="reveal-layer" aria-hidden="true"></div>
 
@@ -41,17 +44,18 @@
     
     <!-- Hero Section -->
     <section id="about" class="hero-section">
-      <div class="hero-container grid grid-2">
+      <div class="hero-container">
         <div class="hero-text-content">
+          <div class="hero-eyebrow">Full Stack Developer</div>
           <div class="badge-container">
             <span class="badge badge-accent">Available for New Roles</span>
             <span class="badge badge-outline">AWS Certified</span>
           </div>
-          <h1 class="hero-title">Neelesh Mishra</h1>
-          <h2 class="hero-subtitle">Full Stack Engineer</h2>
+          <h1 class="hero-title">Neelesh<br>Mishra</h1>
+          <h2 class="hero-subtitle">Building the Future, One Line at a Time</h2>
           <p class="hero-description">
-            Dedicated developer with <strong>over 5 years</strong> of experience building dynamic web applications. 
-            Specializing in high-performance frontend frameworks like <strong>NextJS</strong> & <strong>ReactJS</strong>, robust backends using <strong>NodeJS</strong> & <strong>PHP (Laravel, CodeIgniter)</strong>, and certified <strong>AWS</strong> cloud infrastructure deployment.
+            Dedicated developer with <strong>8+ years</strong> of experience building and scaling web applications for global enterprise and government clients.
+            Specializing in <strong>NextJS</strong>, <strong>ReactJS</strong> &amp; <strong>TypeScript</strong>, robust backends via <strong>NodeJS</strong> &amp; <strong>PHP</strong>, certified <strong>AWS</strong> cloud infrastructure &mdash; and the latest in <strong>Vibe Coding</strong> with AI-powered development.
           </p>
           <div class="hero-buttons print-hide">
             <a href="#analyzer" class="btn btn-primary">Analyze Job Fit</a>
@@ -59,9 +63,12 @@
           </div>
         </div>
         <div class="hero-visual-content">
-          <div class="avatar-container">
-            <div class="avatar-glow"></div>
-            <img src="avatar.jpg" alt="Neelesh Mishra - Full Stack Engineer avatar" class="avatar-img" width="400" height="400">
+          <div id="hero-3d-container">
+            <!-- Three.js will inject its canvas here -->
+            <div class="avatar-wrapper">
+              <div class="avatar-glow"></div>
+              <img src="avatar.jpg" alt="Neelesh Mishra - Full Stack Developer avatar" class="avatar-img" width="400" height="400">
+            </div>
           </div>
         </div>
       </div>
@@ -71,8 +78,9 @@
     <section id="experience" class="section timeline-section">
       <div class="container">
         <div class="section-header">
+          <span class="section-eyebrow">Experience</span>
           <h2 class="section-title">Professional Journey</h2>
-          <p class="section-subtitle">Over 5 years of full stack web engineering experience</p>
+          <p class="section-subtitle">8+ years of full stack web engineering across UAE &amp; India</p>
         </div>
 
         <div class="timeline">
@@ -84,17 +92,17 @@
                 <span class="timeline-date">Nov 2022 - Present</span>
                 <span class="timeline-location">Dubai, UAE</span>
               </div>
-              <h3 class="timeline-role">Full Stack Developer</h3>
-              <h4 class="timeline-company">e& (Etisalat Group)</h4>
+              <h3 class="timeline-role">Senior Software Engineer</h3>
+              <h4 class="timeline-company">e& enterprise (Etisalat Group)</h4>
               <p class="timeline-desc">
-                Focusing on creating highly scalable and efficient software solutions. Implementing robust, secure cloud infrastructures utilizing AWS certifications to drive performance and resilience.
+                Building scalable enterprise platforms for major UAE government and financial clients &mdash; including Dubai Police's Oyoon camera monitoring system, AWQAF's SmartKhateeb operations portal, ADCB's MPOS platform, and ADNOC's national permitting portal &mdash; using Next.js, TypeScript, and secure AWS infrastructure.
               </p>
               <div class="timeline-tags">
                 <span class="tag">Next.js</span>
+                <span class="tag">TypeScript</span>
                 <span class="tag">React</span>
                 <span class="tag">Node.js</span>
                 <span class="tag">AWS Cloud</span>
-                <span class="tag">Microservices</span>
               </div>
               <button class="btn btn-text btn-sm print-hide" onclick="openDetailsDialog('etisalat')">Deep Dive Detail &rarr;</button>
             </div>
@@ -155,48 +163,83 @@
     <section id="skills" class="section skills-section">
       <div class="container">
         <div class="section-header">
+          <span class="section-eyebrow">Expertise</span>
           <h2 class="section-title">Core Competencies</h2>
-          <p class="section-subtitle">A curated lookup of engineering skills and toolkits</p>
+          <p class="section-subtitle">A curated stack of engineering skills, frameworks, and toolkits</p>
         </div>
 
         <div class="grid grid-3">
-          <!-- Skill Card 1 -->
+          <!-- Skill Card 1: Vibe Coding (FEATURED FIRST) -->
+          <div class="card skill-card skill-card-featured">
+            <div class="skill-card-header">
+              <div class="skill-card-icon vibecoding-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+              </div>
+              <span class="skill-new-badge">✦ Latest</span>
+            </div>
+            <h3>Vibe Coding</h3>
+            <ul class="skill-list">
+              <li>AI-Assisted Development <span class="skill-gauge" style="--val: 95%;"></span></li>
+              <li>Prompt Engineering <span class="skill-gauge" style="--val: 92%;"></span></li>
+              <li>Rapid Prototyping <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>Creative Problem Solving <span class="skill-gauge" style="--val: 88%;"></span></li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 2: Agentic AI Engineer -->
+          <div class="card skill-card skill-card-featured skill-card-agentic">
+            <div class="skill-card-header">
+              <div class="skill-card-icon agentic-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 1 8 8v1a8 8 0 0 1-8 8H8a8 8 0 0 1-8-8v-1a8 8 0 0 1 8-8h4z"/><path d="M9 10h.01"/><path d="M15 10h.01"/><path d="M9.5 15a3.5 3.5 0 0 0 5 0"/><path d="M17 8V6a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2"/></svg>
+              </div>
+              <span class="skill-new-badge skill-new-badge-amber">⚡ Rising</span>
+            </div>
+            <h3>Agentic AI Engineer</h3>
+            <ul class="skill-list">
+              <li>Multi-Agent System Design <span class="skill-gauge" style="--val: 93%;"></span></li>
+              <li>LLM Orchestration &amp; RAG <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>Tool &amp; Function Calling <span class="skill-gauge" style="--val: 88%;"></span></li>
+              <li>Autonomous Workflow Pipelines <span class="skill-gauge" style="--val: 85%;"></span></li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 3 -->
           <div class="card skill-card">
             <div class="skill-card-icon frontend-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-.375l-2.4-3a1 1 0 0 1 0-1.25l2.4-3A1 1 0 0 1 4 6h16a1 1 0 0 1 .78.375l2.4 3a1 1 0 0 1 0 1.25l-2.4 3A1 1 0 0 1 20 14H4Z"/><path d="M12 6v8"/></svg>
             </div>
             <h3>Frontend Architecture</h3>
             <ul class="skill-list">
-              <li>Next.js <span class="skill-gauge" style="--val: 90%;"></span></li>
-              <li>React.js <span class="skill-gauge" style="--val: 90%;"></span></li>
-              <li>HTML5 & CSS3 <span class="skill-gauge" style="--val: 95%;"></span></li>
+              <li>Next.js &amp; React.js <span class="skill-gauge" style="--val: 92%;"></span></li>
+              <li>TypeScript <span class="skill-gauge" style="--val: 88%;"></span></li>
+              <li>HTML5 &amp; CSS3 <span class="skill-gauge" style="--val: 95%;"></span></li>
               <li>JavaScript (ES6+) <span class="skill-gauge" style="--val: 92%;"></span></li>
-            </ul>
-          </div>
-
-          <!-- Skill Card 2 -->
-          <div class="card skill-card">
-            <div class="skill-card-icon backend-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
-            </div>
-            <h3>Backend & Core Logic</h3>
-            <ul class="skill-list">
-              <li>Node.js <span class="skill-gauge" style="--val: 85%;"></span></li>
-              <li>PHP (Laravel / CodeIgniter) <span class="skill-gauge" style="--val: 90%;"></span></li>
-              <li>RESTful API Design <span class="skill-gauge" style="--val: 92%;"></span></li>
-              <li>Database Management (SQL) <span class="skill-gauge" style="--val: 88%;"></span></li>
             </ul>
           </div>
 
           <!-- Skill Card 3 -->
           <div class="card skill-card">
+            <div class="skill-card-icon backend-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>
+            </div>
+            <h3>Backend &amp; Core Logic</h3>
+            <ul class="skill-list">
+              <li>Node.js <span class="skill-gauge" style="--val: 85%;"></span></li>
+              <li>PHP (Laravel / CodeIgniter) <span class="skill-gauge" style="--val: 90%;"></span></li>
+              <li>RESTful API Design <span class="skill-gauge" style="--val: 92%;"></span></li>
+              <li>MySQL, PostgreSQL &amp; MongoDB <span class="skill-gauge" style="--val: 88%;"></span></li>
+            </ul>
+          </div>
+
+          <!-- Skill Card 4 -->
+          <div class="card skill-card">
             <div class="skill-card-icon devops-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
             </div>
-            <h3>DevOps & Productivity</h3>
+            <h3>DevOps &amp; Productivity</h3>
             <ul class="skill-list">
               <li>AWS Cloud Services <span class="skill-gauge" style="--val: 80%;"></span></li>
-              <li>Docker Containerization <span class="skill-gauge" style="--val: 78%;"></span></li>
+              <li>Docker &amp; CI/CD Pipelines <span class="skill-gauge" style="--val: 78%;"></span></li>
               <li>Microsoft Power Apps <span class="skill-gauge" style="--val: 75%;"></span></li>
               <li>Davra Platform <span class="skill-gauge" style="--val: 80%;"></span></li>
             </ul>
@@ -209,8 +252,9 @@
     <section id="analyzer" class="section analyzer-section print-hide">
       <div class="container">
         <div class="section-header">
-          <h2 class="section-title">Job Description Analyzer</h2>
-          <p class="section-subtitle">Paste a job specification to calculate match percentage and gap analysis with Neelesh's skills</p>
+          <span class="section-eyebrow">Smart Match</span>
+          <h2 class="section-title">Job Fit Analyzer</h2>
+          <p class="section-subtitle">Paste a job spec to calculate your match percentage and skill gap analysis</p>
         </div>
 
         <div class="card analyzer-card">
@@ -289,8 +333,9 @@
     <section id="chat" class="section chat-section print-hide">
       <div class="container">
         <div class="section-header">
+          <span class="section-eyebrow">AI Assistant</span>
           <h2 class="section-title">Ask Neelesh AI</h2>
-          <p class="section-subtitle">Chat with an automated assistant containing Neelesh's detailed professional background</p>
+          <p class="section-subtitle">Chat with an AI assistant powered by Neelesh's detailed professional background</p>
         </div>
 
         <div class="card chat-card">
@@ -346,7 +391,7 @@
 
     <!-- Additional Information & Certifications -->
     <section class="section certs-section">
-      <div class="container grid grid-2">
+      <div class="container grid grid-3">
         <!-- Certifications Box -->
         <div class="card simple-card">
           <h3>Certifications & Training</h3>
@@ -372,6 +417,21 @@
           </div>
         </div>
 
+        <!-- Education Box -->
+        <div class="card simple-card">
+          <h3>Education</h3>
+          <div class="details-grid">
+            <div>
+              <h4>MCA</h4>
+              <p class="location-text">Mangalayatan University, Aligarh &mdash; 2024</p>
+            </div>
+            <div>
+              <h4>B.Sc. Mathematics</h4>
+              <p class="location-text">CSJM University &mdash; 2014 - 2017</p>
+            </div>
+          </div>
+        </div>
+
         <!-- Languages & Location Box -->
         <div class="card simple-card">
           <h3>Personal Details</h3>
@@ -380,7 +440,7 @@
               <h4>Languages</h4>
               <ul class="lang-list">
                 <li>Hindi <span class="lang-level">(Full Professional)</span></li>
-                <li>English <span class="lang-level">(Limited Working)</span></li>
+                <li>English <span class="lang-level">(Professional Working)</span></li>
               </ul>
             </div>
             <div>
@@ -399,11 +459,11 @@
     <section class="print-only-resume" aria-hidden="true">
       <div class="print-header">
         <h1>Neelesh Mishra</h1>
-        <p class="print-subtitle">Full Stack Engineer | NextJS, ReactJS, NodeJS, PHP | AWS Certified</p>
+        <p class="print-subtitle">Senior Software Engineer | React, Next.js, Node.js, PHP | AWS Certified</p>
         <div class="print-contacts">
-          <span>Phone: 9999695408</span>
+          <span>Phone: +971-502416958 / +91-9999695408</span>
           <span>Email: n.mish2202@gmail.com</span>
-          <span>LinkedIn: linkedin.com/in/neelesh-mishra-6b5066108</span>
+          <span>LinkedIn: linkedin.com/in/neeleshmishra-6b5066108</span>
           <span>Location: Dubai, United Arab Emirates</span>
         </div>
       </div>
@@ -411,7 +471,7 @@
       <div class="print-summary">
         <h2>Summary</h2>
         <p>
-          Dedicated Full Stack Developer with over 5 years of experience in developing dynamic web applications using technologies like NextJS, ReactJS, NodeJS, and PHP frameworks (Laravel, CodeIgniter). Focus on creating scalable and efficient solutions, leveraging AWS certification to implement robust cloud infrastructure.
+          Full Stack Developer with 8+ years of experience building and scaling web applications using React, Next.js, Node.js, and PHP frameworks (Laravel, CodeIgniter). AWS Certified with hands-on experience designing cloud-based infrastructure, containerizing services with Docker, and delivering low-code solutions with Microsoft Power Apps. Growing expertise in Agentic AI, prompt engineering, and AI-assisted development workflows. Currently building scalable customer-facing platforms at e& in Dubai.
         </p>
       </div>
 
@@ -419,11 +479,11 @@
         <h2>Experience</h2>
         <div class="print-job">
           <div class="job-meta">
-            <strong>e& (Etisalat Group)</strong>
+            <strong>e& enterprise (Etisalat Group)</strong>
             <span>Nov 2022 - Present | Dubai, UAE</span>
           </div>
-          <div class="job-role">Full Stack Developer</div>
-          <p>Focus on creating scalable and efficient solutions, leveraging AWS certification to implement robust cloud infrastructure.</p>
+          <div class="job-role">Senior Software Engineer</div>
+          <p>Building scalable enterprise platforms for major UAE government and financial clients, including Dubai Police's Oyoon camera monitoring system, AWQAF's SmartKhateeb operations portal, ADCB's MPOS platform, and ADNOC's national permitting portal.</p>
         </div>
 
         <div class="print-job">
@@ -448,18 +508,20 @@
       <div class="print-grid-two">
         <div class="print-skills">
           <h2>Skills</h2>
-          <p><strong>Frontend:</strong> NextJS, ReactJS, HTML5, CSS3, ES6 JavaScript</p>
-          <p><strong>Backend & DB:</strong> NodeJS, PHP (Laravel, CodeIgniter), SQL</p>
-          <p><strong>DevOps & Tools:</strong> AWS Certified, Docker, Davra, MS Power Apps</p>
+          <p><strong>Frontend:</strong> NextJS, ReactJS, TypeScript, HTML5, CSS3, ES6 JavaScript</p>
+          <p><strong>Backend & DB:</strong> NodeJS, PHP (Laravel, CodeIgniter), MySQL, MongoDB</p>
+          <p><strong>DevOps & Tools:</strong> AWS Certified, Docker, CI/CD, Davra, MS Power Apps</p>
         </div>
         <div class="print-edu-certs">
           <h2>Education</h2>
-          <p><strong>Bachelor of Science (Maths)</strong> | 2014 - 2017</p>
+          <p><strong>Master of Computer Applications (MCA)</strong> | 2024</p>
+          <p>Mangalayatan University, Aligarh</p>
+          <p><strong>Bachelor of Science (Mathematics)</strong> | 2014 - 2017</p>
           <p>CSJM University, India</p>
-          
+
           <h2>Certifications & Languages</h2>
           <p>AWS Certified Developer | Davra Certification</p>
-          <p>Languages: English, Hindi</p>
+          <p>Languages: English (Professional Working), Hindi (Full Professional)</p>
         </div>
       </div>
     </section>
@@ -471,7 +533,7 @@
   <dialog id="dialog-etisalat" class="detail-dialog">
     <div class="dialog-wrapper">
       <div class="dialog-header">
-        <h3>Full Stack Developer at e& (Etisalat Group)</h3>
+        <h3>Senior Software Engineer at e& enterprise (Etisalat Group)</h3>
         <button class="close-dialog-btn" onclick="closeDetailsDialog('etisalat')" aria-label="Close dialog">&times;</button>
       </div>
       <div class="dialog-body">
@@ -479,20 +541,30 @@
           <div><strong>Timeline:</strong> Nov 2022 - Present (3 years 9 months)</div>
           <div><strong>Location:</strong> Dubai, United Arab Emirates</div>
         </div>
-        <h4>Key Focus Areas & Impact:</h4>
+        <h4>Key Projects & Impact:</h4>
         <ul>
-          <li><strong>Cloud Architecture Optimization:</strong> Engineered scalable application topologies on AWS, maximizing resource efficiency, speed, and cloud spend.</li>
-          <li><strong>Scalable Microservices:</strong> Migrated legacy workloads to modular Node.js/TypeScript microservices, resulting in improved deployment velocity and application uptime.</li>
-          <li><strong>High-Performance Frontends:</strong> Developed modern user portals utilizing Next.js, leveraging Server Components and incremental static regeneration to minimize initial load times (LCP).</li>
-          <li><strong>Quality & Reliability:</strong> Instituted rigorous automated testing pipelines and telemetry alerts, reducing server issues.</li>
+          <li><strong>Oyoon &mdash; Dubai Police Camera Monitoring:</strong> Built the admin panel for Dubai Police's national camera monitoring system, controlling which officers access which camera feeds and locations. Delivered user/group management, role-based permissions, Active Directory SSO, SMS notifications via ESB, and a full audit log.</li>
+          <li><strong>SmartKhateeb &mdash; AWQAF Ministry of Islamic Affairs:</strong> Built the operations portal managing 1,000+ mosque khateebs across all UAE Emirates, including trilingual (Arabic/English/Urdu) sermon scheduling, evaluations, recordings, and reporting with Active Directory SSO and full RBAC.</li>
+          <li><strong>Sharjah Safari Website:</strong> Developed the full website for one of the world's largest safari parks, including a custom WordPress theme, 15+ ACF Pro modular content blocks, bilingual Arabic/English support, an interactive park map, and WPML localization.</li>
+          <li><strong>MPOS &mdash; Abu Dhabi Commercial Bank:</strong> Built a dual-portal POS operations platform featuring real-time SLA dashboards, terminal/accessory inventory, merchant management, request tracking with timelines, and field team assignments.</li>
+          <li><strong>ADNOC NOC Portal:</strong> Shipped the permitting portal for smart infrastructure installation across 72 ADNOC sites in all 7 UAE Emirates, featuring a 5-stage government approval chain and a UAE-wide Mapbox installations map.</li>
+          <li><strong>NHRI &mdash; UAE National Human Rights Institution:</strong> Built the complete bilingual (Arabic/English) public website and CMS admin panel, plus a citizen complaint submission system.</li>
+          <li><strong>Oyoon SIM & Router Management:</strong> Shipped an internal hardware logistics platform with 4 user roles, a 2-stage approval chain, a real-time availability dashboard, overdue alerts, and CSV export.</li>
+          <li><strong>GCGRA Self-Exclusion Portal &mdash; UAE Gaming Regulatory Authority:</strong> Built the UAE's national gaming self-exclusion platform, including UAE Pass national ID authentication and WCAG 2.1 AA accessibility compliance.</li>
         </ul>
         <div class="dialog-tech-pill-container">
           <span class="tag">Next.js</span>
-          <span class="tag">React</span>
-          <span class="tag">Node.js</span>
-          <span class="tag">AWS (EC2, S3, RDS, Lambda)</span>
           <span class="tag">TypeScript</span>
-          <span class="tag">CI/CD</span>
+          <span class="tag">Prisma ORM</span>
+          <span class="tag">PostgreSQL</span>
+          <span class="tag">Tailwind CSS</span>
+          <span class="tag">shadcn/ui</span>
+          <span class="tag">MUI</span>
+          <span class="tag">WordPress</span>
+          <span class="tag">Mapbox</span>
+          <span class="tag">UAE Pass</span>
+          <span class="tag">RTL/i18n</span>
+          <span class="tag">Docker</span>
         </div>
       </div>
     </div>
@@ -566,13 +638,15 @@
       <div class="footer-contacts">
         <a href="mailto:n.mish2202@gmail.com">n.mish2202@gmail.com</a>
         <span>&bull;</span>
-        <a href="tel:9999695408">9999695408</a>
+        <a href="tel:+971502416958">+971-502416958</a>
         <span>&bull;</span>
-        <a href="https://www.linkedin.com/in/neelesh-mishra-6b5066108" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.linkedin.com/in/neeleshmishra-6b5066108" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
   <script src="app.js"></script>
+  <script src="3d.js"></script>
 </body>
 </html>
