@@ -1,14 +1,17 @@
+import { NEELESH_PROFILE } from "@/lib/data";
+
 export default function PrintResume() {
   return (
     <section className="print-only-resume" aria-hidden="true">
       <div className="print-header">
-        <h1>Neelesh Mishra</h1>
+        <h1>{NEELESH_PROFILE.name}</h1>
         <p className="print-subtitle">Senior Software Engineer | React, Next.js, Node.js, PHP | AWS Certified</p>
         <div className="print-contacts">
-          <span>Phone: +971-502416958 / +91-9999695408</span>
-          <span>Email: n.mish2202@gmail.com</span>
-          <span>LinkedIn: linkedin.com/in/neeleshmishra-6b5066108</span>
-          <span>Location: Dubai, United Arab Emirates</span>
+          <span>Phone: {NEELESH_PROFILE.phone} / {NEELESH_PROFILE.phoneAlt}</span>
+          <span>Email: {NEELESH_PROFILE.email}</span>
+          <span>LinkedIn: {NEELESH_PROFILE.linkedin}</span>
+          <span>GitHub: {NEELESH_PROFILE.github}</span>
+          <span>Location: {NEELESH_PROFILE.location}</span>
         </div>
       </div>
 

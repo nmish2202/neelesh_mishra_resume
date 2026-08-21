@@ -13,6 +13,10 @@ export default function Footer() {
           <a href={`https://www.${NEELESH_PROFILE.linkedin}`} target="_blank" rel="noopener">
             LinkedIn
           </a>
+          <span>&bull;</span>
+          <a href={`https://${NEELESH_PROFILE.github}`} target="_blank" rel="noopener">
+            GitHub
+          </a>
         </div>
       </div>
     </footer>

@@ -29,3 +29,4 @@ yarn-error.log*
 # internal reference docs — kept locally, not tracked
 /CLAUDE.md
 /Neelesh_Mishra_Resume.md
+.env*
