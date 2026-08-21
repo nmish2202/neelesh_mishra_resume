@@ -7,6 +7,7 @@ export default function PrintResume() {
         <h1>{NEELESH_PROFILE.name}</h1>
         <p className="print-subtitle">Senior Software Engineer | React, Next.js, Node.js, PHP | AWS Certified</p>
         <div className="print-contacts">
+          <span>Website: {NEELESH_PROFILE.website}</span>
           <span>Phone: {NEELESH_PROFILE.phone} / {NEELESH_PROFILE.phoneAlt}</span>
           <span>Email: {NEELESH_PROFILE.email}</span>
           <span>LinkedIn: {NEELESH_PROFILE.linkedin}</span>

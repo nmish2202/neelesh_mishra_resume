@@ -6,6 +6,10 @@ export default function Footer() {
       <div className="container footer-container">
         <p>&copy; 2026 Neelesh Mishra. Built with Next.js, React &amp; Tailwind CSS.</p>
         <div className="footer-contacts">
+          <a href={`https://${NEELESH_PROFILE.website}`} target="_blank" rel="noopener">
+            {NEELESH_PROFILE.website}
+          </a>
+          <span>&bull;</span>
           <a href={`mailto:${NEELESH_PROFILE.email}`}>{NEELESH_PROFILE.email}</a>
           <span>&bull;</span>
           <a href={`tel:${NEELESH_PROFILE.phone}`}>{NEELESH_PROFILE.phone}</a>
