@@ -8,7 +8,7 @@ import Reveal from "./Reveal";
 const SAMPLE_CHIPS = [
   { key: "fullstack", label: "Full Stack React/Node" },
   { key: "php-laravel", label: "Laravel/PHP Developer" },
-  { key: "aws-devops", label: "AWS / DevOps Architect" },
+  { key: "ai-powered-dev", label: "AI-Powered Development" },
 ];
 
 export default function JobFitAnalyzer() {
