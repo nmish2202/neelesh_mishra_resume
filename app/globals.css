@@ -233,11 +233,11 @@ strong {
 }
 
 @media (max-width: 900px) {
-  .grid-2 { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: minmax(0, 1fr); }
 }
 
 .grid-3 {
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 }
 
 .section {
@@ -583,7 +583,7 @@ strong {
 }
 
 @media (max-width: 900px) {
-  .hero-container { grid-template-columns: 1fr; gap: 3rem; }
+  .hero-container { grid-template-columns: minmax(0, 1fr); gap: 3rem; }
 }
 
 .hero-text-content {
@@ -1103,7 +1103,7 @@ strong {
 
 @media (max-width: 900px) {
   .analyzer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1332,7 +1332,7 @@ strong {
 
 @media (max-width: 768px) {
   .chat-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     grid-template-rows: auto auto;
     height: auto;
     overflow: visible;
@@ -1435,6 +1435,8 @@ strong {
   padding: 1rem;
   border-radius: 12px;
   font-size: 0.95rem;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .message-time {
@@ -1500,6 +1502,7 @@ strong {
 
 .chat-text-input {
   flex: 1;
+  min-width: 0;
   background: var(--bg-secondary);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
@@ -1566,7 +1569,7 @@ strong {
 
 @media (max-width: 600px) {
   .details-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -1685,7 +1688,7 @@ strong {
 
 @media (max-width: 600px) {
   .dialog-meta-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
