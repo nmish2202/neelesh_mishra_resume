@@ -1,5 +1,6 @@
 import Image from "next/image";
 import HeroOrb from "./HeroOrb";
+import AskAiButton from "./AskAiButton";
 
 export default function Hero() {
   return (
@@ -29,9 +30,9 @@ export default function Hero() {
             <a href="#analyzer" className="btn btn-primary">
               Analyze Job Fit
             </a>
-            <a href="#chat" className="btn btn-secondary">
+            <AskAiButton className="btn btn-secondary">
               Ask AI Assistant
-            </a>
+            </AskAiButton>
           </div>
         </div>
         <div className="hero-visual-content">

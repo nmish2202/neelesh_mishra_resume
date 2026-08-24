@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SpotlightLayer from "@/components/SpotlightLayer";
 import StarfieldCanvas from "@/components/StarfieldCanvas";
 import CardTilt from "@/components/CardTilt";
+import FloatingChatWidget from "@/components/FloatingChatWidget";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -36,6 +37,7 @@ export default function RootLayout({ children }) {
         <main className="main-content">{children}</main>
         <Footer />
         <CardTilt />
+        <FloatingChatWidget />
       </body>
     </html>
   );

@@ -8,7 +8,6 @@ const NAV_LINKS = [
   { href: "#projects", label: "Projects" },
   { href: "#skills", label: "Skills" },
   { href: "#analyzer", label: "Fit Analyzer" },
-  { href: "#chat", label: "Ask AI" },
 ];
 
 export default function Header() {
@@ -67,6 +66,13 @@ export default function Header() {
               {link.label}
             </a>
           ))}
+          <button
+            type="button"
+            className="nav-link"
+            onClick={() => window.dispatchEvent(new Event("open-ai-chat"))}
+          >
+            Ask AI
+          </button>
         </nav>
         <div className="header-actions">
           <button

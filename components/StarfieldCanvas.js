@@ -25,10 +25,10 @@ function createGlowTexture() {
 // one behind each section further down the page — fills the otherwise-empty mid-page backgrounds
 // without a second render pipeline (same scene/camera/renderer as the starfield).
 const NEBULA_SPECS = [
-  { color: 0x22d3ee, x: -420, y: 140, z: -260, scale: 900, opacity: 0.14 },
+  { color: 0x3b82f6, x: -420, y: 140, z: -260, scale: 900, opacity: 0.14 },
   { color: 0xc084fc, x: 520, y: -180, z: -750, scale: 1100, opacity: 0.13 },
   { color: 0xfbbf24, x: -560, y: 260, z: -1250, scale: 1000, opacity: 0.12 },
-  { color: 0x22d3ee, x: 480, y: -80, z: -1750, scale: 1200, opacity: 0.13 },
+  { color: 0x3b82f6, x: 480, y: -80, z: -1750, scale: 1200, opacity: 0.13 },
   { color: 0xc084fc, x: -300, y: -220, z: -2200, scale: 1000, opacity: 0.11 },
 ];
 
