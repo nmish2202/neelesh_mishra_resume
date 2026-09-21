@@ -1,96 +1,45 @@
 "use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#experience", label: "Experience" },
-  { href: "#projects", label: "Projects" },
-  { href: "#skills", label: "Skills" },
-  { href: "#analyzer", label: "Fit Analyzer" },
+const links = [
+  { href: "/#selected-work", label: "Work" },
+  { href: "/#ai-initiatives", label: "AI" },
+  { href: "/#experience", label: "Experience" },
+  { href: "/lab", label: "Lab" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Header() {
-  const [activeSection, setActiveSection] = useState("about");
+  const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("dark");
 
-  // Load saved theme (or default to dark) on mount
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme") || "dark";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-  }, []);
-
-  // Scroll-based active nav link highlighter
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const handleScroll = () => {
-      let current = "";
-      const scrollPos = window.scrollY + 120;
-
-      sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-          current = section.getAttribute("id");
-        }
-      });
-
-      if (current) setActiveSection(current);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useEffect(() => setTheme(document.documentElement.dataset.theme || "dark"), []);
+  useEffect(() => setMenuOpen(false), [pathname]);
 
   const toggleTheme = () => {
-    const currentTheme = document.documentElement.getAttribute("data-theme");
-    const newTheme = currentTheme === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", newTheme);
-    localStorage.setItem("portfolio-theme", newTheme);
-    window.dispatchEvent(new Event("themechange"));
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem("portfolio-theme", nextTheme);
+    setTheme(nextTheme);
   };
 
   return (
-    <header className="header">
-      <div className="header-container">
-        <a href="#" className="logo">
-          <span className="logo-accent">&lt;</span>NM<span className="logo-accent"> /&gt;</span>
-        </a>
-        <nav className="nav" aria-label="Main Navigation">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`nav-link${activeSection === link.href.slice(1) ? " active" : ""}`}
-            >
-              {link.label}
-            </a>
-          ))}
-          <button
-            type="button"
-            className="nav-link"
-            onClick={() => window.dispatchEvent(new Event("open-ai-chat"))}
-          >
-            Ask AI
-          </button>
+    <header className="site-header">
+      <div className="header-inner section-shell">
+        <Link className="brand" href="/" aria-label="Neelesh Mishra home">
+          <span className="brand-mark">NM</span><span className="brand-copy"><strong>Systems Atlas</strong><small>People · systems · outcomes</small></span>
+        </Link>
+        <nav id="primary-menu" className={`site-nav${menuOpen ? " is-open" : ""}`} aria-label="Primary navigation">
+          {links.map((link) => <Link href={link.href} key={link.href} onClick={() => setMenuOpen(false)}>{link.label}</Link>)}
         </nav>
-        <div className="header-actions">
-          <button
-            id="theme-toggle"
-            className="icon-btn"
-            aria-label="Toggle light and dark mode"
-            onClick={toggleTheme}
-          >
-            <svg className="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-            <svg className="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-          </button>
-          <a
-            href="/Neelesh_Mishra_Resume.pdf"
-            download="Neelesh_Mishra_Resume.pdf"
-            className="btn btn-secondary btn-sm print-hide"
-          >
-            Download Resume
-          </a>
+        <div className="header-controls">
+          <span className="header-location">DXB / UAE</span>
+          <button className="theme-toggle" type="button" onClick={toggleTheme} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}><span aria-hidden="true">{theme === "dark" ? "☼" : "◐"}</span></button>
+          <button className="menu-toggle" type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="primary-menu" aria-label="Toggle navigation"><span /><span /></button>
         </div>
       </div>
     </header>
