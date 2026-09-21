@@ -1,28 +1,10 @@
-import { NEELESH_PROFILE } from "@/lib/data";
+import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="footer print-hide">
-      <div className="container footer-container">
-        <p>&copy; 2026 Neelesh Mishra. Built with Next.js, React &amp; Tailwind CSS.</p>
-        <div className="footer-contacts">
-          <a href={`https://${NEELESH_PROFILE.website}`} target="_blank" rel="noopener">
-            {NEELESH_PROFILE.website}
-          </a>
-          <span>&bull;</span>
-          <a href={`mailto:${NEELESH_PROFILE.email}`}>{NEELESH_PROFILE.email}</a>
-          <span>&bull;</span>
-          <a href={`tel:${NEELESH_PROFILE.phone}`}>{NEELESH_PROFILE.phone}</a>
-          <span>&bull;</span>
-          <a href={`https://www.${NEELESH_PROFILE.linkedin}`} target="_blank" rel="noopener">
-            LinkedIn
-          </a>
-          <span>&bull;</span>
-          <a href={`https://${NEELESH_PROFILE.github}`} target="_blank" rel="noopener">
-            GitHub
-          </a>
-        </div>
-      </div>
-    </footer>
+    <footer className="site-footer"><div className="section-shell footer-inner">
+      <div className="footer-brand"><strong>NM</strong><span>Systems Atlas</span></div><p>Senior Full Stack Developer · Dubai, UAE</p>
+      <nav aria-label="Footer navigation"><Link href="/#selected-work">Work</Link><Link href="/lab">Lab</Link><Link href="/#contact">Contact</Link></nav><p>© 2026 Neelesh Mishra</p>
+    </div></footer>
   );
 }
